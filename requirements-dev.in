@@ -1,0 +1,9 @@
+-r requirements.in
+# Packaging
+bumpversion==0.5.3
+# Tests
+pytest
+tox
+# Docs
+Sphinx
+sphinxcontrib-napoleon
