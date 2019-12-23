@@ -44,6 +44,11 @@ def main(ctx, verbose, debug_file):
 @main.command()
 @click.option("--template", type=click.Choice(["basic"], case_sensitive=False))
 @click.option(
+    "-c",
+    "--checkout",
+    help="Branch, tag or commit to checkout after git clone",
+)
+@click.option(
     "-f",
     "--overwrite-if-exists",
     is_flag=True,
@@ -76,6 +81,7 @@ def main(ctx, verbose, debug_file):
 def new(
     ctx,
     template,
+    checkout,
     output_dir,
     overwrite_if_exists,
     replay,
@@ -91,7 +97,7 @@ def new(
     try:
         cookiecutter(
             template=template,
-            checkout=None,
+            checkout=checkout,
             no_input=False,
             extra_context=None,
             replay=replay,
