@@ -19,7 +19,7 @@ from ls import ls
 @click.option(
     "--debug-file",
     type=click.Path(),
-    default=None,
+    default="dataflow-cookiecutter.log",
     help="File to be used as a stream for DEBUG logging",
 )
 @click.pass_context

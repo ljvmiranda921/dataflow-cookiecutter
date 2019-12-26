@@ -9,4 +9,4 @@ def configure_logger(stream_level, debug_file):
     """Configure logger based on Loguru"""
     logger.remove()
     logger.add(sys.stderr, level=stream_level)
-    logger.add(debug_file, level=stream_level)
+    logger.add(debug_file, level="DEBUG")
