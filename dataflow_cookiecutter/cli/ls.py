@@ -9,7 +9,7 @@ import click
 from tabulate import tabulate
 from loguru import logger
 
-from mixins import configure_logger
+from .mixins import configure_logger
 
 
 ROOT = os.path.abspath(os.path.dirname(__file__))

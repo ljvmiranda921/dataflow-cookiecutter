@@ -4,8 +4,8 @@
 
 import click
 
-from new import new
-from ls import ls
+from .new import new
+from .ls import ls
 
 
 @click.group()

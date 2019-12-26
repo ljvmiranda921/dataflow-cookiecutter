@@ -21,6 +21,6 @@ setup(
     install_requires=requirements,
     include_package_data=True,
     entry_points={
-        "console_scripts": ["dataflow-cookiecutter=cookiecutter.cli.main:main"]
+        "console_scripts": ["dataflow-cookiecutter=dataflow_cookiecutter.cli.main:main"]
     },
 )
