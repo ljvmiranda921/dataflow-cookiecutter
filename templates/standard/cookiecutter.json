@@ -1,0 +1,12 @@
+{
+    "maintainer_name": "Lj V. Miranda",
+    "email": "ljvmiranda@gmail.com",
+    "project_name": "My Dataflow Project",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+    "project_underscore_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "project_short_description": "An awesome Dataflow project for kickass pipelines",
+    "gcp_project": "my-gcp-project",
+    "gcp_region": "us-west-1",
+    "gcs_artifact_bucket": "gs://my-temp-storage-bucket/)", 
+    "version": "0.1.0"
+}
