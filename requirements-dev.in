@@ -4,6 +4,7 @@ bumpversion==0.5.3
 # Tests
 pytest
 tox
+pydocstyle
 # Docs
 Sphinx
 sphinxcontrib-napoleon
