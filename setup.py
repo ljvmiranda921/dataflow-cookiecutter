@@ -17,10 +17,10 @@ setup(
     long_description=readme,
     long_description_content_type="text/markdown",
     author_email="ljvmiranda@gmail.com",
-    packages=find_packages(exclude=["docs", "tests"]),
+    packages=find_packages(exclude=["docs", "tests", "templates"]),
     install_requires=requirements,
     include_package_data=True,
     entry_points={
-        "console_scripts": ["dataflow-cookiecutter=cookiecutter.cli:main"]
+        "console_scripts": ["dataflow-cookiecutter=cookiecutter.cli.main:main"]
     },
 )
