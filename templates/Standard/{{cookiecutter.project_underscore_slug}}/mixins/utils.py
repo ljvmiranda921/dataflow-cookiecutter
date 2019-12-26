@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+"""Utility methods."""
+
 import os
 import uuid
 

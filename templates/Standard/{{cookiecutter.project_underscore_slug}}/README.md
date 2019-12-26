@@ -29,7 +29,7 @@ CUSTOM_COMMANDS = [
 ```
 
 You can also add more dependencies for each of your workers by filling-in the
-`worker-requirements.txt` file. **Lastly, you can edit the pipeline by updating
+`requirements-worker.txt` file. **Lastly, you can edit the pipeline by updating
 `main.py`.** 
 
 ### Running pipelines

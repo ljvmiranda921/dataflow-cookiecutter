@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Entrypoint for Dataflow Pipeline"""
+"""Entrypoint for Dataflow Pipeline."""
 
 import apache_beam as beam
 import click
@@ -46,7 +46,7 @@ from mixins.utils import configure_pipeline
 )
 @click.option("--local", is_flag=True, help="Run on local machine")
 def run(**opts):
-    """Run the Dataflow pipeline"""
+    """Run the Dataflow pipeline."""
     pipeline_options = configure_pipeline(
         project=opts["project"],
         artifact_bucket=opts["artifact_bucket"],

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Dataflow-cookiecutter command-line interface (CLI)"""
+"""Dataflow-cookiecutter command-line entrypoint."""
 
 import click
 
@@ -24,7 +24,7 @@ from ls import ls
 )
 @click.pass_context
 def main(ctx, verbose, debug_file):
-    """dataflow-cookiecutter is a tool for setting-up Dataflow projects"""
+    """dataflow-cookiecutter is a tool for setting-up Dataflow projects."""
     ctx.ensure_object(dict)
     ctx.obj = {"VERBOSE": verbose, "DEBUG_FILE": debug_file}
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Dataflow-cookiecutter command-line interface (CLI)"""
+"""Sub-command for creating a new Dataflow project."""
 
 import json
 import sys
@@ -82,7 +82,7 @@ def new(
     config_file,
     default_config,
 ):
-    """Create a new Dataflow project"""
+    """Create a new Dataflow project."""
     configure_logger(
         stream_level="DEBUG" if ctx.obj["VERBOSE"] else "INFO",
         debug_file=ctx.obj["DEBUG_FILE"],

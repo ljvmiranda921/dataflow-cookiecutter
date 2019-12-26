@@ -71,12 +71,15 @@ class CustomCommands(setuptools.Command):
     """A setuptools Command class able to run arbitrary commands."""
 
     def initialize_options(self):
+        """Set default values for all options that this command supports."""
         pass
 
     def finalize_options(self):
+        """Set final values for all the options that this command supports."""
         pass
 
     def RunCustomCommand(self, command_list):
+        """Run custom commands via a subprocess."""
         print("Running command: {}".format(command_list))
         p = subprocess.Popen(
             command_list,
@@ -94,6 +97,7 @@ class CustomCommands(setuptools.Command):
             )
 
     def run(self):
+        """Run custom commands defined by CUSTOM_COMMANDS."""
         for command in CUSTOM_COMMANDS:
             self.RunCustomCommand(command)
 

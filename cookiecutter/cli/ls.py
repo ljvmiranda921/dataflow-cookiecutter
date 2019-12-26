@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+"""Sub-command for listing all available templates."""
+
 import os
 import json
 
@@ -17,7 +19,7 @@ INDEX_FILE = os.path.join(ROOT, "index.json")
 @click.command()
 @click.pass_context
 def ls(ctx):
-    """List all available templates"""
+    """List all available templates."""
     configure_logger(
         stream_level="DEBUG" if ctx.obj["VERBOSE"] else "INFO",
         debug_file=ctx.obj["DEBUG_FILE"],
