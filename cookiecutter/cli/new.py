@@ -24,18 +24,11 @@ from mixins import configure_logger
 
 @click.command()
 @click.option(
-    "--template", type=str, help="Git repository to base the templates from"
-)
-@click.option(
-    "-c",
-    "--checkout",
-    help="Branch, tag or commit to checkout after git clone",
-)
-@click.option(
-    "-f",
-    "--overwrite-if-exists",
-    is_flag=True,
-    help="Overwrite the contents of the output directory if it already exists",
+    "-t",
+    "--template",
+    type=click.Choice(["basic"], case_sensitive=False),
+    help="Dataflow template to create",
+    default="basic",
 )
 @click.option(
     "-o",
@@ -45,9 +38,26 @@ from mixins import configure_logger
     help="Where to output the generated project dir into",
 )
 @click.option(
+    "-f",
+    "--overwrite-if-exists",
+    is_flag=True,
+    help="Overwrite the contents of the output directory if it already exists",
+)
+@click.option(
     "--replay",
     is_flag=True,
     help="Do not prompt for params and use information entered previously",
+)
+@click.option(
+    "--repository",
+    type=str,
+    help="Git repository to base the templates from",
+    default="https://github.com/ljvmiranda921/dataflow-cookiecutter",
+)
+@click.option(
+    "-c",
+    "--checkout",
+    help="Branch, tag or commit to checkout after git clone",
 )
 @click.option(
     "--config-file",
@@ -64,10 +74,11 @@ from mixins import configure_logger
 def new(
     ctx,
     template,
-    checkout,
     output_dir,
     overwrite_if_exists,
     replay,
+    repository,
+    checkout,
     config_file,
     default_config,
 ):
@@ -79,7 +90,8 @@ def new(
 
     try:
         cookiecutter(
-            template=template,
+            template=repository,
+            # directory=template,   # Add this after 1.7.1 has been released
             checkout=checkout,
             no_input=False,
             extra_context=None,
