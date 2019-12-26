@@ -122,3 +122,10 @@ def new(
         )
         logger.error("Context: {}".format(context_str))
         sys.exit(1)
+
+    msg = f"""
+    Template ({template}) built! Be sure to check the generated
+    requirements-worker.txt and README file.
+    """
+
+    logger.success(msg)
