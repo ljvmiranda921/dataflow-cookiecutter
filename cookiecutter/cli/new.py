@@ -16,33 +16,16 @@ from cookiecutter.exceptions import (
     UndefinedVariableInTemplate,
     UnknownExtension,
 )
-from cookiecutter.log import configure_logger
+from loguru import logger
 from cookiecutter.main import cookiecutter
 
+from mixins import configure_logger
 
-@click.group()
+
+@click.command()
 @click.option(
-    "-v",
-    "--verbose",
-    is_flag=True,
-    help="Print debug information",
-    default=False,
+    "--template", type=str, help="Git repository to base the templates from"
 )
-@click.option(
-    "--debug-file",
-    type=click.Path(),
-    default=None,
-    help="File to be used as a stream for DEBUG logging",
-)
-@click.pass_context
-def main(ctx, verbose, debug_file):
-    """dataflow-cookiecutter is a tool for setting-up Dataflow projects"""
-    ctx.ensure_object(dict)
-    ctx.obj = {"VERBOSE": verbose, "DEBUG_FILE": debug_file}
-
-
-@main.command()
-@click.option("--template", type=click.Choice(["basic"], case_sensitive=False))
 @click.option(
     "-c",
     "--checkout",
@@ -64,7 +47,7 @@ def main(ctx, verbose, debug_file):
 @click.option(
     "--replay",
     is_flag=True,
-    help="Do not prompt for parameters and only use information entered previously",
+    help="Do not prompt for params and use information entered previously",
 )
 @click.option(
     "--config-file",
@@ -116,18 +99,14 @@ def new(
         RepositoryNotFound,
         RepositoryCloneFailed,
     ) as e:
-        click.echo(e)
+        logger.error(e)
         sys.exit(1)
     except UndefinedVariableInTemplate as undefined_err:
-        click.echo("{}".format(undefined_err))
-        click.echo("Error message: {}".format(undefined_err.error.message))
+        logger.error("{}".format(undefined_err))
+        logger.error("Error message: {}".format(undefined_err.error.message))
 
         context_str = json.dumps(
             undefined_err.context, indent=4, sort_keys=True
         )
-        click.echo("Context: {}".format(context_str))
+        logger.error("Context: {}".format(context_str))
         sys.exit(1)
-
-
-if __name__ == "__main__":
-    main(obj={})
