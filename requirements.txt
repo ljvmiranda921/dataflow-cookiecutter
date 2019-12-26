@@ -1,2 +1,4 @@
 cookiecutter
+tabulate
+loguru
 click
