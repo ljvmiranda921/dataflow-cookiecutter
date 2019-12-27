@@ -31,4 +31,17 @@ steps:
 - script: |
     pip install pytest pytest-azurepipelines
     pytest
-  displayName: 'pytest'
+  displayName: 'Run tests'
+
+- script: |
+    pip install wheel
+    python setup.py sdist bdist_wheel
+  displayName: 'Artifact creation'
+  
+
+- task: PublishPipelineArtifact@0
+  condition: eq(variables['python.version'], '3.7')  # Only publish those passing Py37
+  inputs:
+      artifactName: 'dataflow-cookiecutter-artifact'
+      targetPath: 'dist'
+  displayName: 'Publish pipeline artifact'
