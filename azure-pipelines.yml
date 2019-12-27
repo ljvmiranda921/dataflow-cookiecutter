@@ -4,8 +4,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
 trigger:
-- master
-- refs/tags/*
+    branches:
+        include:
+        - master
+        - refs/tags/*
+    tags:
+        include:
+        - v*
 
 pool:
   vmImage: 'ubuntu-latest'
