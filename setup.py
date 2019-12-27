@@ -11,7 +11,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="dataflow-cookiecutter",
-    version="1.0.0-alpha.0",
+    version="1.0.0-alpha.1",
     author="Lester James V. Miranda",
     description="Command-line utility for creating Dataflow projects",
     long_description=readme,
