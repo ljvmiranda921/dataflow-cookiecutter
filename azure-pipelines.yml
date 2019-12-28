@@ -46,8 +46,17 @@ steps:
   
 
 - task: PublishPipelineArtifact@0
-  condition: eq(variables['python.version'], '3.7')  # Only publish those passing Py37
+  condition: eq(variables['python.version'], '3.7')  # Only publish artifacts passing Py37
   inputs:
       artifactName: 'dataflow-cookiecutter-artifact'
       targetPath: 'dist'
   displayName: 'Publish pipeline artifact'
+
+- task: GithubRelease@0
+  inputs:
+      gitHubConnection: dataflow-cookiecutter-release
+      repositoryName: '$(build.Repository.Name)'
+      assets: dist/*
+      addChangeLog: true
+      compareWith: 'lastRelease'
+  displayName: 'Create Github release'
