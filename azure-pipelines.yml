@@ -53,6 +53,7 @@ steps:
   displayName: 'Publish pipeline artifact'
 
 - task: GithubRelease@0
+  condition: eq(variables['python.version'], '3.7')  # Only make release passing Py37
   inputs:
       gitHubConnection: dataflow-cookiecutter-release
       repositoryName: '$(build.Repository.Name)'
