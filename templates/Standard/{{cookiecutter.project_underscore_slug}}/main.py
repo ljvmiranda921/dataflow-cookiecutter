@@ -5,7 +5,7 @@
 import apache_beam as beam
 import click
 
-from mixins.utils import configure_pipeline
+from src.utils import configure_pipeline
 
 
 @click.option(
@@ -59,6 +59,8 @@ def run(**opts):
 
     with beam.Pipeline(options=pipeline_options) as p:
         # Your Dataflow Pipeline goes here
+        # Learn more about writing Dataflow pipelines in this link:
+        # https://cloud.google.com/dataflow/docs/quickstarts
         pass
 
 
