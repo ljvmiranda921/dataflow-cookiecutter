@@ -10,7 +10,7 @@ requirements = ["cookiecutter", "tabulate", "loguru", "click"]
 
 setup(
     name="dataflow-cookiecutter",
-    version="1.0.0-alpha.2",
+    version="1.0.0-alpha.3",
     author="Lester James V. Miranda",
     description="Command-line utility for creating Dataflow projects",
     long_description=readme,
