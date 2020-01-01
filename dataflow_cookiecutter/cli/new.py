@@ -20,13 +20,14 @@ from loguru import logger
 from cookiecutter.main import cookiecutter
 
 from .utils import configure_logger
+from .config import TEMPLATE_CONFIG
 
 
 @click.command()
 @click.option(
     "-t",
-    "--template",
-    type=click.Choice(["basic"], case_sensitive=False),
+    "--dataflow-template",
+    type=click.Choice(list(TEMPLATE_CONFIG.keys()), case_sensitive=False),
     help="Dataflow template to create",
     default="basic",
 )
@@ -73,7 +74,7 @@ from .utils import configure_logger
 @click.pass_context
 def new(
     ctx,
-    template,
+    dataflow_template,
     output_dir,
     overwrite_if_exists,
     replay,
@@ -89,9 +90,10 @@ def new(
     )
 
     try:
+        dataflow_template_dir, _ = TEMPLATE_CONFIG[dataflow_template.lower()]
         cookiecutter(
             template=repository,
-            # directory=template,   # Add this after 1.7.1 has been released
+            directory=dataflow_template_dir,
             checkout=checkout,
             no_input=False,
             extra_context=None,
