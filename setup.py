@@ -6,8 +6,7 @@ from setuptools import find_packages, setup
 with open("README.md", encoding="utf8") as f:
     readme = f.read()
 
-with open("requirements.txt") as f:
-    requirements = f.read().splitlines()
+requirements = ["cookiecutter", "tabulate", "loguru", "click"]
 
 setup(
     name="dataflow-cookiecutter",
@@ -21,6 +20,11 @@ setup(
     install_requires=requirements,
     include_package_data=True,
     entry_points={
-        "console_scripts": ["dataflow-cookiecutter=dataflow_cookiecutter.cli.main:main"]
+        "console_scripts": [
+            "dataflow-cookiecutter=dataflow_cookiecutter.cli.main:main"
+        ]
     },
+    dependency_links=[
+        "git://github.com/ljvmiranda921/cookiecutter.git#egg=cookiecutter"
+    ],
 )

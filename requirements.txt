@@ -1,4 +1,4 @@
-cookiecutter
+-e git+git://github.com/ljvmiranda921/cookiecutter.git#egg=cookiecutter
 tabulate
 loguru
 click
