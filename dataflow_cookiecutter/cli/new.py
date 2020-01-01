@@ -19,7 +19,7 @@ from cookiecutter.exceptions import (
 from loguru import logger
 from cookiecutter.main import cookiecutter
 
-from .mixins import configure_logger
+from .utils import configure_logger
 
 
 @click.command()

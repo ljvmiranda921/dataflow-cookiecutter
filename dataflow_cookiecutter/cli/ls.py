@@ -9,7 +9,7 @@ import click
 from tabulate import tabulate
 from loguru import logger
 
-from .mixins import configure_logger
+from .utils import configure_logger
 from .config import TEMPLATE_CONFIG
 
 
