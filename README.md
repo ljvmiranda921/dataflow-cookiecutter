@@ -1,9 +1,10 @@
 # dataflow-cookiecutter [![Build Status](https://dev.azure.com/ljvmiranda/ljvmiranda/_apis/build/status/ljvmiranda921.dataflow-cookiecutter?branchName=master)](https://dev.azure.com/ljvmiranda/ljvmiranda/_build/latest?definitionId=5&branchName=master) ![PyPI](https://img.shields.io/pypi/v/dataflow-cookiecutter?color=light-green&label=pypi&logo=python&logoColor=white)
 
-
 **Tired of copy-pasting your ad-hoc Dataflow modules?** Then you can use this
 [cookiecutter](https://github.com/cookiecutter/cookiecutter) command-line
 tool to easily generate standardized Dataflow templates! :zap:
+
+![dataflow-cookiecutter demo](assets/demo.gif)
 
 ## Installation
 
@@ -34,7 +35,7 @@ by running `dataflow-cookiecutter ls`. For example, you can create a Google
 Cloud Storage (GCS) to BigQuery (BQ) pipeline via:
 
 ```sh
-$ dataflow-cookiecuter new --template=GCSToBQ
+$ dataflow-cookiecuter new -t GCSToBQ
 ```
 
 Lastly, our templates are **highly-compatible to your trusty, old
