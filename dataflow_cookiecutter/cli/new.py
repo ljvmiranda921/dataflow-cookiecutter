@@ -116,17 +116,17 @@ def new(
         logger.error(e)
         sys.exit(1)
     except UndefinedVariableInTemplate as undefined_err:
-        logger.error("{}".format(undefined_err))
-        logger.error("Error message: {}".format(undefined_err.error.message))
+        logger.error(f"{undefined_err}")
+        logger.error(f"Error message: {undefined_err.error.message}")
 
         context_str = json.dumps(
             undefined_err.context, indent=4, sort_keys=True
         )
-        logger.error("Context: {}".format(context_str))
+        logger.error(f"Context: {context_str}")
         sys.exit(1)
 
     msg = f"""
-    Template ({template}) built! Be sure to check the generated
+    Template ({dataflow_template}) built! Be sure to check the generated
     requirements-worker.txt and README file.
     """
 
