@@ -4,5 +4,5 @@
 
 
 TEMPLATE_CONFIG = {
-    "Standard": ["templates/Standard", "No-frills, basic Dataflow template"]
+    "standard": ["templates/Standard", "No-frills, basic Dataflow template"]
 }
