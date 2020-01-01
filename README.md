@@ -46,6 +46,12 @@ $ cookiecutter https://github.com/ljvmiranda921/dataflow-cookiecutter \
    --directory <directory-to-desired-template> 
 ```
 
+## Contributing
+
+Contributions are welcome, and they are greatly appreciated! Every little bit
+helps, and credit will always be given. For more information, please proceed to
+this
+[link](https://github.com/ljvmiranda921/dataflow-cookiecutter/blob/master/CONTRIBUTING.rst)
 
 ## FAQ
 
