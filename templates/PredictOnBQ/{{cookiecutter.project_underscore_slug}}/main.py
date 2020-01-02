@@ -10,6 +10,21 @@ from src.predict import predict_fn, get_schema
 
 
 @click.option(
+    "--model-gcs-path",
+    default="{{cookiecutter.model_source_path}}",
+    help="Google Cloud Storage URI for the model"
+)
+@click.option(
+    "--bq-source-name",
+    default="{{cookiecutter.bq_source_name}}",
+    help="BigQuery source table to source the samples from"
+)
+@click.option(
+    "--bq-source-pkey",
+    default="{{cookiecutter.bq_source_pkey}}",
+    help="Column name to use as primary key"
+)
+@click.option(
     "-n",
     "--num-workers",
     default=8,
@@ -58,25 +73,21 @@ def run(**opts):
         local=opts["local"],
     )
 
+    # fmt: off
     with beam.Pipeline(options=pipeline_options) as p:
         result = (
             p
             | "Read BQ Table"
             >> beam.io.Read(
                 beam.io.BigQuerySource(
-                    query="SELECT * FROM {{cookiecutter.bq_source_name}}",
+                    query=f"SELECT * FROM {opts['bq_source_name']}",
                     use_standard_sql=True,
                 )
             )
-            | "Add Key"
-            >> beam.Map(
-                lambda row: (row["{{cookiecutter.bq_source_pkey}}"], row)
-            )
+            | "Add Key" >> beam.Map(lambda row: (row[f"{opts['bq_source_pkey']}"], row))
             | "Group By Key" >> beam.GroupByKey()
-            # TODO: Create generaliable predict_fn
-            | "Run Predict Function" >> beam.FlatMap(predict.predict_fn)
-            | "Write BQ Table"
-            >> beam.io.Write(
+            | "Run Predict Function" >> beam.FlatMap(predict.predict_fn, source_path=opts["model_gcs_path"])
+            | "Write BQ Table" >> beam.io.Write(
                 beam.io.BigQuerySink(
                     "{{cookiecutter.bq_sink_name}}",
                     # TODO: Create generalizable schema
